@@ -9,59 +9,29 @@
 </head>
 
 <body>
-
-    <div class="navigation">
-        <h5 id="highscore">Highscore</h5>
-        <h5 id="timer">Timer: </h5>
-    </div>
-
-
-
-    <div class="heading">
-        <Section class="title">
-            <h1>Coding Quiz Challange</h1>
-            <p id="instructions">Try to answer the following code-related questions within the time limit
-                keep in mind that incorrect answers will penalize your score/time by
-                ten seconds!
+    <div class="container">
+        <div id="instructions">
+            <h1 >Coding Quiz Challenge</h1>
+            <p> Try to answer the following code related questions within 
+                the time limit. Keep in mind that incorrect answers will
+                penalize your score/time by ten seconds!
             </p>
-            <button id="start-btn">Start Quiz</button>
-        </Section>
-    </div>
-
-    <div class="questions">
-        <div class="question-1">
-
+            <button id="start-btn" class="start-btn btn">Start</button>
         </div>
-        <div class="question-2">
 
-        </div>
-        <div class="question-3">
-
-        </div>
-        <div class="question-4">
-
-        </div>
-        <div class="question-5">
-
-        </div>
-        <div class="question-6">
-
-        </div>
-        <div class="question-7">
-
-        </div>
-        <div class="question-8">
-
-        </div>
-        <div class="question-9">
-
-        </div>
-        <div class="question-10">
-
+         <div id="question-container" class="hide">
+            <div>
+                <h1 id="questions">Questions</h1>
+            </div>
+            <div id="answer-btns" class="btn-grid">
+                <button id="btn-1" class="btn">Answer 1</button>
+                <button id="btn-2" class="btn">Answer 2</button>
+                <button id="btn-3" class="btn">Answer 3</button>
+                <button id="btn-4" class="btn">Answer 4</button>
+            </div>
         </div>
     </div>
 
-
-    <script> src="./assets/js/script.js" </script>
+    <script src="./assets/js/script.js"></script>
 </body>
 </html>
