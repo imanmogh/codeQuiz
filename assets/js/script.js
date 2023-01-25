@@ -3,56 +3,97 @@ var startButton = document.getElementById("start-btn");
 
 var questionsContainerElement = document.getElementById('question-container');
 var questionsElement = document.getElementById('questions');
-var answerBtn = document.getElementById('answer-btns')
+var answerContainer = document.getElementById('answer-btns')
 
 
-var btn1 = document.getElementById('btn-1');
-var btn2 = document.getElementById('btn-2');
-var btn3 = document.getElementById('btn-3');
-var btn4 = document.getElementById('btn-4');
+var questionCount;
 
 
-var question1 = {
-    question: "Commonly used data types DO Not include: ",
-    answers: [
-        { text: "strings", isCorrect: false},
-        { text: "booleans", isCorrect: false},
-        { text: "alerts", isCorrect: true},
-        { text: "numbers", isCorrect: false}
-    ]
-}
+//Array variable to store question, answer, and correct objects
+var questions = [
+    {
+        Question: "Commonly used data types DO NOT inclued: ",
+        Answers:["strings","booleans","alerts","numbers"],
+        Correct: "alerts"
+    },
+    {
+        Question: "The condidition in an if/else is enclosed with _ ",
+        Answers:["quotes","curly brackets","parenthesis","square brackets"],
+        Correct: "curly brackets"
+    },
+    {
+        Question: "Arrays in Javascript can be used to store _ ",
+        Answers:["numbers and strings","other arrays","booleans","all of the above"],
+        Correct: "all of the above"
+    },
+    {
+        Question: "String values must be enclose within _ when being assigned to variables: ",
+        Answers:["commas","curly brackets","quotes","parenthesis"],
+        Correct: "quotes"
+    },
+    {
+        Question: "A very useful tool used during development and debugging for printing content to the debugger is: ",
+        Answers:["Javascript","terminal/bash","for loops","console.log"],
+        Correct: "console.log"
+    },
 
+]
 
 function startGame() {
     instructionsElement.classList.add('hide')
     questionsContainerElement.classList.remove('hide');
     showQuestion();
-
 }
 
 function showQuestion() {
-    questionsElement.innerHTML = question1.question;
+    //Displaying the first  question
+    questionCount = 0;
+    questionsElement.innerHTML = questions[questionCount].Question;
 
-  
-
-    btn1.innerHTML = question1.answers[0].text;
-    btn2.innerHTML = question1.answers[1].text;
-    btn3.innerHTML = question1.answers[2].text;
-    btn4.innerHTML = question1.answers[3].text;
+    for (var i = 0; i < questions[questionCount].Answers.length; i++) {
+       let btn = document.createElement("button");
+        btn.innerHTML = questions[questionCount].Answers[i];
+        btn.classList.add("btn");
+        answerContainer.appendChild(btn);
+    }
 }
 
+function nextQuestion() {
+    //Displaying the next question
+    answerContainer.innerHTML = "";
+    questionCount++;
+
+    questionsElement.innerHTML = questions[questionCount].Question;
+
+    for (var i = 0; i < questions[questionCount].Answers.length; i++) {
+       let btn = document.createElement("button");
+        btn.innerHTML = questions[questionCount].Answers[i];
+        btn.classList.add("btn");
+        answerContainer.appendChild(btn);
+    }
+}
+
+function timer() {
+
+}
+
+function highScore() {
+
+}
 
 
 startButton.addEventListener("click", startGame)
 
-answerBtn.addEventListener('click', function(event) {
-
-    event.preventDefault();
+answerContainer.addEventListener('click', function(event) {
+    console.log(event);
     
-    if(question1.answers.isCorrect) {
+    if(event.target.textContent == questions[questionCount].Correct) {
         console.log("Correct");
+        nextQuestion();
     }
     else {
-        return console.log("Wrong");
+        console.log("Wrong");
+        //Timer deduction function
+        nextQuestion();
     }
 })

@@ -3,12 +3,19 @@
     font-family: 'Times New Roman', Times, serif;
 }
 
+.header {
+    display: flex;
+    height: 30vh;
+    justify-content: space-around;
+}
+
+ /*--------------------------------------*/
 
 body {
     padding: 0;
     margin: 0;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     width: 100vw;
     height: 100vh;
    
@@ -17,6 +24,7 @@ body {
 
 .container {
     display: flex;
+    flex-direction: column;
     align-items: center;
     background-color: white;
     border-radius: 10px;
@@ -43,8 +51,12 @@ text-align: center;
 
 /*--------------------------------------*/
 
-.question-container {
+
+
+.question-content {
     display: flex;
+    flex-direction: column;
+    width: 700px;
 }
 
 .btn-grid {
