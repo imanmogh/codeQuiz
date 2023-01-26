@@ -5,6 +5,7 @@
 
 .header {
     display: flex;
+    flex-direction: row;
     height: 30vh;
     justify-content: space-around;
 }
@@ -51,8 +52,6 @@ text-align: center;
 
 /*--------------------------------------*/
 
-
-
 .question-content {
     display: flex;
     flex-direction: column;
@@ -72,6 +71,35 @@ text-align: center;
 
 /*--------------------------------------*/
 
+
+.submission-container {
+    display: flex;
+    flex-direction: column;
+    width: 700px;
+    align-items: flex-start;
+}
+
+#submission {
+    align-items: center;
+}
+
+#submission h1  {
+    text-align: center;
+}
+
+#submission p  {
+max-width: 400px;
+text-align: center;
+}
+
+#submission button  {
+    position: relative;
+    bottom: 43px;
+    left: 170px;
+}
+
+
+/*--------------------------------------*/
 
 .hide {
     display: none;

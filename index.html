@@ -14,7 +14,7 @@
 <body>
 
     <header class="header">
-        <h3 id="highscore">Highscore</h3>
+        <h3 id="highscore">View highscore</h3>
         <h3 id="timer">Timer: 0</h3>
     </header>
 
@@ -28,15 +28,22 @@
             <button id="start-btn" class="start-btn btn">Start</button>
         </div>
 
-    <div class="question-content">
-         <div id="question-container" class="hide">
-            <div>
-                <h1 id="questions">Questions</h1>
-            </div>
-                <div id="answer-btns" class="btn-grid">
+        <div class="question-content">
+            <div id="question-container" class="hide">
+                <div>
+                    <h1 id="questions">Questions</h1>
+                </div>
+                    <div id="answer-btns" class="btn-grid">
+                </div>
             </div>
         </div>
-    </div>
+        <div class="submission-container">
+            <div id="submission" class="hide">
+                <h1 >All done</h1>
+                <p> Your final score is: </p>
+                <button id="submit-btn" class="submit-btn btn">Submit</button>
+            </div>
+        </div>
     </div>
 
     <script src="./assets/js/script.js"></script>

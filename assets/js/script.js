@@ -1,3 +1,7 @@
+var timerElement = document.getElementById("timer");
+var timer;
+var timerCount = 75;
+
 var instructionsElement = document.getElementById("instructions");
 var startButton = document.getElementById("start-btn");
 
@@ -5,8 +9,9 @@ var questionsContainerElement = document.getElementById('question-container');
 var questionsElement = document.getElementById('questions');
 var answerContainer = document.getElementById('answer-btns')
 
-
 var questionCount;
+
+var submissionElement = document.getElementById('submission');
 
 
 //Array variable to store question, answer, and correct objects
@@ -36,14 +41,26 @@ var questions = [
         Answers:["Javascript","terminal/bash","for loops","console.log"],
         Correct: "console.log"
     },
-
 ]
 
 function startGame() {
     instructionsElement.classList.add('hide')
     questionsContainerElement.classList.remove('hide');
     showQuestion();
+    startTimer();
 }
+
+function startTimer() {
+    // Sets timer
+    timer = setInterval(function() {
+      timerCount--;
+      timerElement.textContent = timerCount;
+      if (timerCount === 0) {
+        // Clears interval
+        clearInterval(timer);
+      }
+    }, 1000);
+  }
 
 function showQuestion() {
     //Displaying the first  question
@@ -73,11 +90,8 @@ function nextQuestion() {
     }
 }
 
-function timer() {
-
-}
-
 function highScore() {
+    localStorage
 
 }
 
@@ -94,6 +108,7 @@ answerContainer.addEventListener('click', function(event) {
     else {
         console.log("Wrong");
         //Timer deduction function
+        timerCount = timerCount - 10;
         nextQuestion();
     }
 })
