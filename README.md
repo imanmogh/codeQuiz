@@ -13,8 +13,9 @@ N/A
 
 ## Usage
 
-![Alt text](assets/images/screenshot-1.png)
-![Alt text](assets/images/screenshot-2.png)
+![Alt text](assets/images/Screenshot-1.png)
+![Alt text](assets/images/Screenshot-2.png)
+![Alt text](assets/images/Screenshot-3.png)
 
 
 ## Credits
