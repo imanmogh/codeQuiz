@@ -8,13 +8,11 @@
     <title>Code Quiz</title>
 </head>
 
-
-
-
 <body>
-
     <header class="header">
-        <h3 id="highscore">View highscore</h3>
+        <button id="highscore">
+            <a href="/high-score.html"><h3>View highscore</h3></a>
+        </button>
         <h3 id="timer">Timer: 0</h3>
     </header>
 
@@ -35,13 +33,19 @@
                 </div>
                     <div id="answer-btns" class="btn-grid">
                 </div>
+                <div>
+                    <h3 id="answer"></h3>
+                </div>
             </div>
         </div>
-        <div class="submission-container">
-            <div id="submission" class="hide">
+        <div class="result-container">
+            <div id="results" class="hide">
                 <h1 >All done</h1>
-                <p> Your final score is: </p>
+            <form>
+                <label for="initials"> Put in your initials: <input type="text" id="initials"> </label>
+            
                 <button id="submit-btn" class="submit-btn btn">Submit</button>
+            </form>
             </div>
         </div>
     </div>

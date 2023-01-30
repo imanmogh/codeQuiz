@@ -1,3 +1,4 @@
+//Variables ---------------------------------------------
 var timerElement = document.getElementById("timer");
 var timer;
 var timerCount = 75;
@@ -8,13 +9,19 @@ var startButton = document.getElementById("start-btn");
 var questionsContainerElement = document.getElementById('question-container');
 var questionsElement = document.getElementById('questions');
 var answerContainer = document.getElementById('answer-btns')
+var answerElement = document.getElementById('answer')
 
 var questionCount;
 
 var submissionElement = document.getElementById('submission');
 
+var highscoreResults = document.getElementById('highscore-results');
+var highscore = JSON.parse(localStorage.getItem("highscore", JSON.stringify([])));
+var submitBtn = document.getElementById('submit-btn')
 
-//Array variable to store question, answer, and correct objects
+
+
+//Array variable to store question, answer, and correct objects ---------------------------------------------
 var questions = [
     {
         Question: "Commonly used data types DO NOT inclued: ",
@@ -43,6 +50,12 @@ var questions = [
     },
 ]
 
+
+
+
+//Functions ---------------------------------------------
+
+//Function to start the game
 function startGame() {
     instructionsElement.classList.add('hide')
     questionsContainerElement.classList.remove('hide');
@@ -50,6 +63,7 @@ function startGame() {
     startTimer();
 }
 
+//Function to start the timer
 function startTimer() {
     // Sets timer
     timer = setInterval(function() {
@@ -60,8 +74,9 @@ function startTimer() {
         clearInterval(timer);
       }
     }, 1000);
-  }
+}
 
+//Function  to show the first question
 function showQuestion() {
     //Displaying the first  question
     questionCount = 0;
@@ -75,6 +90,7 @@ function showQuestion() {
     }
 }
 
+//Function  to show the next question
 function nextQuestion() {
     //Displaying the next question
     answerContainer.innerHTML = "";
@@ -88,25 +104,31 @@ function nextQuestion() {
         btn.classList.add("btn");
         answerContainer.appendChild(btn);
     }
+
+    
 }
 
+//Function  to show users highscore
 function highScore() {
-    localStorage
+    console.log("Clicked the highscore button!")
 
 }
 
 
-startButton.addEventListener("click", startGame)
+// Event Listeners ---------------------------------------------
+
+
+startButton.addEventListener("click", startGame);
 
 answerContainer.addEventListener('click', function(event) {
     console.log(event);
     
     if(event.target.textContent == questions[questionCount].Correct) {
-        console.log("Correct");
+        answerElement.textContent = "Correct";
         nextQuestion();
     }
     else {
-        console.log("Wrong");
+        answerElement.textContent = "Wrong";
         //Timer deduction function
         timerCount = timerCount - 10;
         nextQuestion();

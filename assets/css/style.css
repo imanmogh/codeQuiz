@@ -10,6 +10,16 @@
     justify-content: space-around;
 }
 
+
+
+
+#highscore {
+    display: flex;
+    justify-content: center;
+    margin: 15px;
+    height: fit-content;
+}
+
  /*--------------------------------------*/
 
 body {
@@ -72,27 +82,27 @@ text-align: center;
 /*--------------------------------------*/
 
 
-.submission-container {
+.result-container {
     display: flex;
     flex-direction: column;
     width: 700px;
     align-items: flex-start;
 }
 
-#submission {
+#results {
     align-items: center;
 }
 
-#submission h1  {
+#results h1  {
     text-align: center;
 }
 
-#submission p  {
+#results p  {
 max-width: 400px;
 text-align: center;
 }
 
-#submission button  {
+#results button  {
     position: relative;
     bottom: 43px;
     left: 170px;
