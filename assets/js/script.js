@@ -141,7 +141,7 @@ function highScore(x, y) {
     scores.push(highScoreData);
 
     localStorage.setItem('highScoreData', JSON.stringify(scores));
-    location.href = "high-score.html";
+    location.href = "highScore.html";
 }
 
 // Event Listeners ---------------------------------------------
