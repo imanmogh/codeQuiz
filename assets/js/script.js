@@ -1,6 +1,5 @@
 //Variables ---------------------------------------------
 var timerElement = document.getElementById("timer");
-var timer;
 var timerCount = 75;
 
 var instructionsElement = document.getElementById("instructions");
@@ -16,8 +15,13 @@ var questionCount;
 var submissionElement = document.getElementById('submission');
 
 var highscoreResults = document.getElementById('highscore-results');
-var highscore = JSON.parse(localStorage.getItem("highscore", JSON.stringify([])));
-var submitBtn = document.getElementById('submit-btn')
+var submitBtn = document.getElementById('submit-btn');
+var scores = [];
+var getScore = JSON.parse(localStorage.getItem('highScoreData'));
+
+
+var resultContainer = document.getElementById('results');
+initialsElement = document.getElementById('initials')
 
 
 
@@ -47,10 +51,8 @@ var questions = [
         Question: "A very useful tool used during development and debugging for printing content to the debugger is: ",
         Answers:["Javascript","terminal/bash","for loops","console.log"],
         Correct: "console.log"
-    },
+    }
 ]
-
-
 
 
 //Functions ---------------------------------------------
@@ -66,6 +68,7 @@ function startGame() {
 //Function to start the timer
 function startTimer() {
     // Sets timer
+    timerCount;
     timer = setInterval(function() {
       timerCount--;
       timerElement.textContent = timerCount;
@@ -75,6 +78,8 @@ function startTimer() {
       }
     }, 1000);
 }
+
+
 
 //Function  to show the first question
 function showQuestion() {
@@ -93,27 +98,51 @@ function showQuestion() {
 //Function  to show the next question
 function nextQuestion() {
     //Displaying the next question
+    // clear the answer area
     answerContainer.innerHTML = "";
+  
+    // increment you question count
     questionCount++;
 
-    questionsElement.innerHTML = questions[questionCount].Question;
-
-    for (var i = 0; i < questions[questionCount].Answers.length; i++) {
-       let btn = document.createElement("button");
-        btn.innerHTML = questions[questionCount].Answers[i];
-        btn.classList.add("btn");
-        answerContainer.appendChild(btn);
+    // ask if we are done w/ the questions
+    if (questionCount > 4) {
+        //stop timer
+        clearTimeout(timer);
+        // clear the question area
+        questionsContainerElement.innerHTML = "";
+        // show the result area
+        resultContainer.classList.remove('hide');
+        
     }
+    // else do what we were doing
+    else {
+        questionsElement.innerHTML = questions[questionCount].Question;
 
-    
+        for (var i = 0; i < questions[questionCount].Answers.length; i++) {
+        let btn = document.createElement("button");
+            btn.innerHTML = questions[questionCount].Answers[i];
+            btn.classList.add("btn");
+            answerContainer.appendChild(btn);
+        }
+    }
 }
+
+
+
 
 //Function  to show users highscore
-function highScore() {
-    console.log("Clicked the highscore button!")
+function highScore(x, y) {
 
+    var highScoreData = {
+        initials: x,
+        userScore: y
+    }
+
+    scores.push(highScoreData);
+
+    localStorage.setItem('highScoreData', JSON.stringify(scores));
+    location.href = "high-score.html";
 }
-
 
 // Event Listeners ---------------------------------------------
 
@@ -121,9 +150,8 @@ function highScore() {
 startButton.addEventListener("click", startGame);
 
 answerContainer.addEventListener('click', function(event) {
-    console.log(event);
-    
-    if(event.target.textContent == questions[questionCount].Correct) {
+  
+    if(event.target.textContent === questions[questionCount].Correct) {
         answerElement.textContent = "Correct";
         nextQuestion();
     }
@@ -134,3 +162,9 @@ answerContainer.addEventListener('click', function(event) {
         nextQuestion();
     }
 })
+
+submitBtn.addEventListener("click" , function(){
+    let name = document.getElementById("initials").value
+    highScore(name, timerCount)
+
+});
